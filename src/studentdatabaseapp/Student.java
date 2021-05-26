@@ -28,7 +28,6 @@ public class Student {
 
 
         setStudentID();
-        System.out.println(firstName+" "+lastName+" "+gradeYear+" "+studentID);
     }
     //Generate an ID
     private void setStudentID(){
@@ -45,7 +44,7 @@ public class Student {
             Scanner in = new Scanner(System.in);
             String course = in.nextLine();
             if (!course.equals("Q")){
-                courses=courses+"\n"+course;
+                courses=courses+"\n "+course;
                 tuitionBalance = tuitionBalance+costOfCourse;
             }
             else break;
@@ -66,4 +65,11 @@ public class Student {
         viewBalance();
     }
     //Show status
+    public String showInfo() {
+        return "Name: " + firstName + " " + lastName +
+                "\nGrade level: "+gradeYear+
+                "\nStudent ID: "+studentID+
+                "\nCourses Enrolled: " + courses +
+                "\nBalance: $" + tuitionBalance;
+    }
 }
