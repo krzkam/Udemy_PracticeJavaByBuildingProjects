@@ -1,5 +1,7 @@
 package studentdatabaseapp;
 
+import com.sun.xml.internal.bind.v2.runtime.output.StAXExStreamWriterOutput;
+
 import java.util.Scanner;
 
 public class Student {
@@ -7,8 +9,8 @@ public class Student {
     private String lastName;
     private int gradeYear;
     private String studentID;
-    private String courses;
-    private String tuitionBalance;
+    private String courses=null;
+    private int tuitionBalance = 0;
     private static int costOfCourse = 600;
     private static int id = 1000;
 
@@ -36,7 +38,23 @@ public class Student {
     }
 
     //Enroll in courses
+    public void enroll(){
+        //Get inside a loop, user hits 0
+        do{
+            System.out.print("Enter course to enroll (0 to quit): ");
+            Scanner in = new Scanner(System.in);
+            String course = in.nextLine();
+            if (!course.equals("Q")){
+                courses=courses+"\n"+course;
+                tuitionBalance = tuitionBalance+costOfCourse;
+            }
+            else break;
+        }while (true);
 
+
+        System.out.println("ENROLLED IN: "+courses);
+        System.out.println("TUITION BALANCE: "+tuitionBalance);
+    }
     //View balance
 
     //Pay Tuition
