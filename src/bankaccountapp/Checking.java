@@ -1,4 +1,4 @@
 package bankaccountapp;
 
-public class Checking {
+public class Checking extends Account {
 }
