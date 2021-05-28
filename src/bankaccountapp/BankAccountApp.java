@@ -1,5 +1,6 @@
 package bankaccountapp;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class BankAccountApp {
@@ -17,6 +18,8 @@ public class BankAccountApp {
 
 
         //Read a CSV File then create new accounts based on that data
+        List <Account> accounts = new LinkedList<Account>();
+
         String file = "C:\\Users\\KAMINKR1\\Downloads\\NewBankAccounts.csv";
         List<String[]> newAccountHolders = utilities.CSV.read(file);
         for (String[] newAccountHolder : newAccountHolders ){
@@ -26,14 +29,19 @@ public class BankAccountApp {
             double initDeposit = Double.parseDouble(newAccountHolder[3]);
             //System.out.println(name+ " "+ssn+ " "+accountType+ " $"+initDeposit);
             if (accountType.equals("Savings")){
-                System.out.println("OPEN A SAVINGS ACCOUNT");
+                accounts.add(new Savings(name,ssn,initDeposit));
             }
             else if (accountType.equals("Checking")){
-                System.out.println("OPEN A CHECKING ACCOUNT");
+                accounts.add(new Checking(name,ssn,initDeposit));
             }
             else{
                 System.out.println("ERROR READING ACCOUNT TYPE");
             }
+        }
+
+        for (Account acc : accounts){
+            System.out.println("- - - - - -");
+            acc.showInfo();
         }
 
     }
